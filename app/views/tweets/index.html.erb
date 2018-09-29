@@ -1,0 +1,19 @@
+<h1>TWEETS</h1>
+
+<%= simple_form_for [ @tweet], id: "form-submit" do |f| %>
+   <%= f.input :content, label: "Tweet" %>
+   <%= f.button :submit, class: "btn btn-danger" %>
+   <% end %>
+
+   <br>
+
+<% @tweets.each do |tweet|  %>
+  <ul>
+    <li>
+      <%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %> <br>
+      <%= tweet.content %>
+      <%= tweet.user.username %>
+
+    </li>
+  </ul>
+<% end %>
