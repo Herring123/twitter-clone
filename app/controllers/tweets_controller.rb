@@ -16,11 +16,12 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:id])
+    # @user = current_user
+    @user = User.find(params[:user_id])
     @tweet = Tweet.new(tweet_params)
     @tweet.user = @user
     if @tweet.save
-    redirect_to tweets_path
+    redirect_to user_tweets_path
   end
   end
 
