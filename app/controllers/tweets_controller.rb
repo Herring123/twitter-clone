@@ -37,6 +37,23 @@ class TweetsController < ApplicationController
     redirect_to tweets_path
   end
 
+  def upvote
+  @tweet = Tweet.find(params[:id])
+  @tweet.upvote_by current_user
+  # redirect_to :tweets
+   if request.xhr?
+    head :ok
+  else
+    redirect_to tweets_path
+  end
+end
+
+def downvote
+  @tweet = Tweet.find(params[:id])
+  @tweet.downvote_by current_user
+  redirect_to :tweets
+end
+
   private
   def tweet_params
     params.require(:tweet).permit(:content)

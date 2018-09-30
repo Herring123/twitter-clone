@@ -1,4 +1,4 @@
-<h1 class="title">TWEETS</h1>
+<h1 class="title text-primary">Home</h1>
 
 
 <div class="tweet-form">
@@ -12,26 +12,21 @@
    <br>
 
 <% @tweets.each do |tweet|  %>
-  <!-- <ul>
-    <li> -->
-
-
-<div class="card">
-  <div class="card-description">
-    <h4><%= link_to tweet.user.username, user_path(tweet.user) %></h4>
-    <p class="tweet-content"><%= tweet.content %></p>
-    <p><%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+  <div class="card">
+    <div class="card-description">
+      <h4><%= link_to tweet.user.username, user_path(tweet.user) %></h4>
+      <p class="tweet-content"><%= tweet.content %></p>
+      <p><%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+      <%= link_to like_tweet_path(tweet), method: :put do %>
+      <p>Upvote <%= tweet.get_upvotes.size %>
+      <% end %>
+      <%= link_to dislike_tweet_path(tweet), method: :put do %>
+      Downvote <%= tweet.get_downvotes.size %></p>
+      <% end %>
+    </div>
   </div>
-  <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-  <!-- <a class="card-link" href="#" ></a> -->
-</div>
-
-
-      <%#= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %> <br>
-      <%#= tweet.content %>
-      <%#= link_to tweet.user.username, user_path(tweet.user) %>
-  <!--   </li>
-  </ul> -->
 <% end %>
-<%= will_paginate @tweets %>
+<div class="pages">
+  <%= will_paginate @tweets,renderer: BootstrapPagination::Rails %>
+</div>
 

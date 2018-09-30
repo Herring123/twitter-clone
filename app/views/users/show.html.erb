@@ -5,8 +5,13 @@
 <% @tweets.each do |tweet| %>
 <ul>
   <li>
-<%= tweet.content %>
+<%= @user.username %>
+<p><%= tweet.content %></p>
+
 <p><%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+<p>Upvotes <%= tweet.get_upvotes.size %> | Downvotes <%= tweet.get_downvotes.size %></p>
+
+
 
   </li>
 </ul>
