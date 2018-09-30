@@ -1,10 +1,12 @@
 <h1>TWEETS</h1>
 
+
+<% if user_signed_in? %>
 <%= simple_form_for [ @user ,@tweet], id: "form-submit" do |f| %>
    <%= f.input :content, label: "Tweet" %>
    <%= f.button :submit, class: "btn btn-danger" %>
    <% end %>
-
+<% end %>
    <br>
 
 <% @tweets.each do |tweet|  %>
@@ -12,8 +14,8 @@
     <li>
       <%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %> <br>
       <%= tweet.content %>
-      <%= tweet.user.email %>
 
+      <%= link_to tweet.user.username, user_path(tweet.user) %>
     </li>
   </ul>
 <% end %>
