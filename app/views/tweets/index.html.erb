@@ -1,21 +1,37 @@
-<h1>TWEETS</h1>
+<h1 class="title">TWEETS</h1>
 
 
-<% if user_signed_in? %>
-<%= simple_form_for [ @user ,@tweet], id: "form-submit" do |f| %>
-   <%= f.input :content, label: "Tweet" %>
-   <%= f.button :submit, class: "btn btn-danger" %>
-   <% end %>
-<% end %>
+<div class="tweet-form">
+  <% if user_signed_in? %>
+    <%= simple_form_for [ @user ,@tweet], id: "form-submit" do |f| %>
+       <%= f.input :content, label: "Tweet" %>
+       <%= f.button :submit, class: "btn btn-primary" %>
+       <% end %>
+  <% end %>
+</div>
    <br>
 
 <% @tweets.each do |tweet|  %>
-  <ul>
-    <li>
-      <%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %> <br>
-      <%= tweet.content %>
+  <!-- <ul>
+    <li> -->
 
-      <%= link_to tweet.user.username, user_path(tweet.user) %>
-    </li>
-  </ul>
+
+<div class="card">
+  <div class="card-description">
+    <h4><%= link_to tweet.user.username, user_path(tweet.user) %></h4>
+    <p class="tweet-content"><%= tweet.content %></p>
+    <p><%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+  </div>
+  <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+  <!-- <a class="card-link" href="#" ></a> -->
+</div>
+
+
+      <%#= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %> <br>
+      <%#= tweet.content %>
+      <%#= link_to tweet.user.username, user_path(tweet.user) %>
+  <!--   </li>
+  </ul> -->
 <% end %>
+<%= will_paginate @tweets %>
+

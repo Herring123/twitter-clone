@@ -2,7 +2,9 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
 
    def index
-    @tweets = Tweet.all.order("created_at DESC")
+    # @tweets = Tweet.all.order("created_at DESC")
+    @tweets = Tweet.paginate(page: params[:page], per_page: 7).order('created_at DESC')
+
     @tweet = Tweet.new
     @user = current_user
   end
