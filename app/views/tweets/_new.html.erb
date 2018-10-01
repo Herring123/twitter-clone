@@ -1,4 +1,4 @@
 <%= simple_form_for [ @user ,@tweet],  id: "form-submit" do |f| %>
-       <%= f.input :content, label: "Tweet (50 chars max)", maxlength: 50, size: 30 %>
+       <%= f.input :content, label: "Tweet (50 chars max)", maxlength: 50, size: 30, placeholder: "What's on your mind?" %>
        <%= f.button :submit, class: "btn btn-primary" %>
        <% end %>

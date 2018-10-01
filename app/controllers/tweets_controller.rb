@@ -60,7 +60,7 @@ class TweetsController < ApplicationController
    if request.xhr?
     head :ok
   else
-    redirect_to tweets_path, notice: "enter"
+    redirect_to tweets_path
   end
 end
 
