@@ -5,12 +5,12 @@ function refreshForm(innerHTML) {
 
 function addTweet(tweetHTML) {
   const tweets = document.getElementById('tweets');
-  reviews.insertAdjacentHTML('beforeend', reviewHTML);
+  tweets.insertAdjacentHTML('beforeend', tweetHTML);
 }
 
-<% if @review.errors.any? %>
+<% if @tweet.errors.any? %>
   refreshForm('<%= j render "tweets/new", user: @user, tweet: @tweet %>');
 <% else %>
   addTweet('<%= j render "tweets/index", tweet: @tweet %>');
-  refreshForm('<%= j render "tweet/new", user: @user, tweet: Tweet.new %>');
+  refreshForm('<%= j render "tweets/new", user: @user, tweet: Tweet.new %>');
 <% end %>

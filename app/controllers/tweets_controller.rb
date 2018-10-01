@@ -24,21 +24,21 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user = @user
     if @tweet.save
-    redirect_to user_tweets_path
-    else
-      redirect_to user_tweets_path
-
-
-    #      respond_to do |format|
-    #     format.html { redirect_to user_tweets_path }
-    #     format.js
-    #   end
+    # redirect_to user_tweets_path
     # else
-    #   respond_to do |format|
-    #     format.html { render 'tweets/index' }
-    #     format.js
-    #   end
-    # end
+    #   redirect_to user_tweets_path
+
+
+         respond_to do |format|
+        format.html { redirect_to user_tweets_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'tweets/index' }
+        format.js
+
+    end
   end
   end
 
@@ -56,18 +56,25 @@ class TweetsController < ApplicationController
   def upvote
   @tweet = Tweet.find(params[:id])
   @tweet.upvote_by current_user
+  respond_to do |format|
+    format.html {redirect_to :tweets}
+    format.js {render "vote"}
+    # redirect_to :tweets
   # redirect_to :tweets
-   if request.xhr?
-    head :ok
-  else
-    redirect_to tweets_path
+  #  if request.xhr?
+  #   head :ok
+  # else
   end
 end
 
 def downvote
   @tweet = Tweet.find(params[:id])
   @tweet.downvote_by current_user
-  redirect_to :tweets
+  respond_to do |format|
+    format.html {redirect_to :tweets}
+    format.js {render "vote"}
+  # redirect_to :tweets
+end
 end
 
   private
@@ -75,3 +82,16 @@ end
     params.require(:tweet).permit(:content)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
