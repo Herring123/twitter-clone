@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!, :except => [:index]
+  # before_action :authenticate_user!, :except => [:index]
 
    def index
     # @tweets = Tweet.all.order("created_at DESC")
@@ -25,7 +25,8 @@ class TweetsController < ApplicationController
     @tweet.user = @user
     if @tweet.save
     redirect_to user_tweets_path
-
+    else
+      redirect_to user_tweets_path
 
 
     #      respond_to do |format|
@@ -59,7 +60,7 @@ class TweetsController < ApplicationController
    if request.xhr?
     head :ok
   else
-    redirect_to tweets_path
+    redirect_to tweets_path, notice: "enter"
   end
 end
 
