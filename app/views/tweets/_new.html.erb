@@ -1,0 +1,4 @@
+<%= simple_form_for [ @user ,@tweet],  id: "form-submit" do |f| %>
+       <%= f.input :content, label: "Tweet" %>
+       <%= f.button :submit, class: "btn btn-primary" %>
+       <% end %>

@@ -15,6 +15,7 @@ class TweetsController < ApplicationController
 
   def new
     # @tweet = Tweet.new
+    # @user = current_user
   end
 
   def create
@@ -24,8 +25,22 @@ class TweetsController < ApplicationController
     @tweet.user = @user
     if @tweet.save
     redirect_to user_tweets_path
+
+
+
+    #      respond_to do |format|
+    #     format.html { redirect_to user_tweets_path }
+    #     format.js
+    #   end
+    # else
+    #   respond_to do |format|
+    #     format.html { render 'tweets/index' }
+    #     format.js
+    #   end
+    # end
   end
   end
+
 
   def edit
     @tweet = Tweet.find(params[:id])

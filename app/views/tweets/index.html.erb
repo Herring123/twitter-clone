@@ -3,29 +3,35 @@
 
 <div class="tweet-form">
   <% if user_signed_in? %>
-    <%= simple_form_for [ @user ,@tweet], id: "form-submit" do |f| %>
-       <%= f.input :content, label: "Tweet" %>
-       <%= f.button :submit, class: "btn btn-primary" %>
-       <% end %>
+    <%= render 'new',user:@user, tweet:@tweet %>
   <% end %>
 </div>
    <br>
 
+<div id="tweets">
 <% @tweets.each do |tweet|  %>
   <div class="card">
     <div class="card-description">
       <h4><%= link_to tweet.user.username, user_path(tweet.user) %></h4>
       <p class="tweet-content"><%= tweet.content %></p>
       <p><%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
-      <%= link_to like_tweet_path(tweet), method: :put do %>
-      <p>Upvote <%= tweet.get_upvotes.size %>
-      <% end %>
-      <%= link_to dislike_tweet_path(tweet), method: :put do %>
-      Downvote <%= tweet.get_downvotes.size %></p>
-      <% end %>
+      <div class="icons">
+        <%= link_to like_tweet_path(tweet),  method: :put do %>
+        <div class="upvote"><i class="fas fa-thumbs-up"></i> <%= tweet.get_upvotes.count %></div>
+        <% end %>
+
+        <%= link_to dislike_tweet_path(tweet), method: :put do %>
+        <div><i class="fas fa-thumbs-down"></i> <%= tweet.get_downvotes.count %></div>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
+</div>
+
+
+
+
 <div class="pages">
   <%= will_paginate @tweets,renderer: BootstrapPagination::Rails %>
 </div>
