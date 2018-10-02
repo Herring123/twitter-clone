@@ -6,5 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
     @tweets = @user.tweets.order('created_at DESC')
+
+
   end
 end

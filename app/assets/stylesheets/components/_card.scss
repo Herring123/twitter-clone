@@ -14,7 +14,8 @@
 
 .username{
   position: absolute;
-  left: 10px;
+  left: 80px;
+  top:6px;
   :hover{
     text-decoration:none;
   }
@@ -23,8 +24,8 @@
 
 .tweet-content{
   position:absolute;
-  top:60px;
-  left:10px;
+  top:70px;
+  left:15px;
 }
 
 .date{
@@ -37,7 +38,7 @@
 
 .icons{
   position:absolute;
-  bottom:20px;
+  bottom:10px;
   display:flex;
   left:15px;
   // justify-content:space-between;
@@ -74,6 +75,31 @@
 
 
 }
+img{
+  border-radius:50%;
+}
+
+.photo{
+  position:absolute;
+  border-radius:50%;
+  top:10px;
+  left:16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

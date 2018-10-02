@@ -8,6 +8,14 @@ class TweetPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def upvote?
+    return true
+  end
+
+def downvote?
+    return true
+  end
   def update?
     record.user == user
     # - record: the restaurant passed to the `authorize` method in controller

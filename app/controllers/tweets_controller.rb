@@ -70,26 +70,30 @@ class TweetsController < ApplicationController
 
   def upvote
   @tweet = Tweet.find(params[:id])
+    authorize @tweet
   @tweet.upvote_by current_user
-  respond_to do |format|
-    format.html {redirect_to :tweets}
-    format.js {render "vote"}
-    # redirect_to :tweets
+    redirect_to :tweets
+
+  # respond_to do |format|
+  #   format.html {redirect_to :tweets}
+  #   format.js {render "vote"}
   # redirect_to :tweets
   #  if request.xhr?
   #   head :ok
   # else
-  end
+
 end
 
 def downvote
   @tweet = Tweet.find(params[:id])
+    authorize @tweet
   @tweet.downvote_by current_user
-  respond_to do |format|
-    format.html {redirect_to :tweets}
-    format.js {render "vote"}
-  # redirect_to :tweets
-end
+  redirect_to :tweets
+
+  # respond_to do |format|
+  #   format.html {redirect_to :tweets}
+  #   format.js {render "vote"}
+
 end
 
   private

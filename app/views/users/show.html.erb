@@ -1,18 +1,20 @@
-<h1>Profile of <%= @user.username  %> </h1>
+<h1 class="profile-title"><%= @user.username  %> </h1>
+<div class="avatar-show">
+  <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill %>
+
+</div>
 
 
-
-<% @tweets.each do |tweet| %>
-<ul>
-  <li>
-<%= @user.username %>
-<p><%= tweet.content %></p>
-
-<p><%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
-<p>Upvotes <%= tweet.get_upvotes.size %> | Downvotes <%= tweet.get_downvotes.size %></p>
-
+<div id="tweets">
+  <% @tweets.each do |tweet|  %>
+  <div id="tweet-<%= tweet.id %>" class="card">
+    <p class="photo"><%= cl_image_tag tweet.user.photo, height: 50, width: 50, crop: :fill %></p>
+    <h4 class = "username"><%= link_to tweet.user.username, user_path(tweet.user) %></h4>
+    <p class="tweet-content"><%= tweet.content %></p>
+    <p class="date"><%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+    <p class = "icons">Upvotes <%= tweet.get_upvotes.size %> | Downvotes <%= tweet.get_downvotes.size %></p>
 
 
-  </li>
-</ul>
-<% end %>
+ <% end %>
+</div>
+

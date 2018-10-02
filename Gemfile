@@ -19,6 +19,8 @@ gem 'webpacker'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap', '~> 1.0.0'
 gem 'acts_as_votable', '~> 0.11.1'
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
