@@ -18,7 +18,6 @@
     <p class="date"><%= tweet.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
     <%= render 'icons', tweet: tweet %>
     <% if policy(tweet).edit? %>
-
     <button type="button" class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModalCenter">
       edit
     </button>
@@ -33,7 +32,6 @@
           </div>
           <div class="modal-body">
           <%= render 'edit',user:@user, tweet:@tweeted %>
-
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -42,18 +40,10 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
       <!-- <p class="edit"> <%= link_to "Edit", edit_tweet_path(tweet) %></p> -->
     <% end %>
     <% if policy(tweet).destroy? %>
-      <p class="destroy"><%= link_to "Delete",  tweet_path(tweet),method: :delete, data: { confirm: "Are you sure?" }, class: "delete"%> </p>
+      <p class="destroy"><%= link_to "Delete",  tweet_path(tweet),method: :delete, data: { confirm: "Are you sure?" }, class: "delete btn btn-primary"%> </p>
     <% end %>
   </div>
  <% end %>
