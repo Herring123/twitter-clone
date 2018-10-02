@@ -3,8 +3,7 @@ class TweetsController < ApplicationController
 
    def index
     # @tweets = Tweet.all.order("created_at DESC")
-    @tweets = Tweet.paginate(page: params[:page], per_page: 7).order('created_at DESC')
-
+    @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 7).order('created_at DESC')
     @tweet = Tweet.new
     @user = current_user
   end
@@ -14,8 +13,6 @@ class TweetsController < ApplicationController
   end
 
   def new
-    # @tweet = Tweet.new
-    # @user = current_user
   end
 
   def create
@@ -23,34 +20,50 @@ class TweetsController < ApplicationController
     @user = User.find(params[:user_id])
     @tweet = Tweet.new(tweet_params)
     @tweet.user = @user
+    authorize @tweet
+
     if @tweet.save
-    # redirect_to user_tweets_path
-    # else
-    #   redirect_to user_tweets_path
-
-
-         respond_to do |format|
-        format.html { redirect_to user_tweets_path }
-        format.js
-      end
+    redirect_to user_tweets_path
     else
-      respond_to do |format|
-        format.html { render 'tweets/index' }
-        format.js
+      redirect_to user_tweets_path
+  end
+  end
 
-    end
-  end
-  end
+
+
+    #      respond_to do |format|
+    #     format.html { redirect_to user_tweets_path }
+    #     format.js
+    #   end
+    # else
+    #   respond_to do |format|
+    #     format.html { render 'tweets/index' }
+    #     format.js
+
+    # end
 
 
   def edit
     @tweet = Tweet.find(params[:id])
+    @user = current_user
+    authorize @tweet
   end
 
   def update
+
     @tweet = Tweet.find(params[:id])
+    authorize @tweet
     @tweet.update(tweet_params)
     redirect_to tweets_path
+  end
+
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    authorize @tweet
+    @tweet.destroy
+
+    redirect_to tweets_path
+
   end
 
   def upvote
