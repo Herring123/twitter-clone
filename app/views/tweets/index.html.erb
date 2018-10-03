@@ -7,7 +7,13 @@
 <% end %>
 <br>
 
-
+<%#= form_tag tweets_path, method: :get do %>
+  <%#= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a tweet or user"
+  %>
+<%# end %>
 
 <div id="tweets">
   <% @tweets.each do |tweet|  %>
@@ -51,7 +57,7 @@
 
 
 
-<div class="pages">
-  <%= will_paginate @tweets,renderer: BootstrapPagination::Rails %>
-</div>
+<!-- <div class="pages"> -->
+  <%#= will_paginate @tweets,renderer: BootstrapPagination::Rails %>
+<!-- </div> -->
 
