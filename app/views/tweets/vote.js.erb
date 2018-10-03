@@ -1,1 +1,1 @@
-$('#tweet-<%= @tweet.id %> .icons').replaceWith('<%= j render("icons", tweet: @tweet) %>');
+document.querySelector('#tweet-<%= @tweet.id %> .icons').outerHTML = '<%= j render("icons", tweet: @tweet) %>';

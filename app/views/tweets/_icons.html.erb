@@ -1,11 +1,11 @@
 
 
 <div class="icons">
-  <%= link_to like_tweet_path(tweet), method: :put do %>
+  <%= link_to like_tweet_path(tweet),remote: true , method: :put do %>
     <div class="upvote"><i class="fas fa-thumbs-up"></i> <%= tweet.get_upvotes.size %></div>
   <% end %>
 
-  <%= link_to dislike_tweet_path(tweet), method: :put do %>
+  <%= link_to dislike_tweet_path(tweet), remote: true, method: :put do %>
     <div class="downvote"><i class="fas fa-thumbs-down"></i> <%= tweet.get_downvotes.size %></div>
   <% end %>
 </div>
