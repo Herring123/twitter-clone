@@ -5,9 +5,9 @@ class TweetsController < ApplicationController
     # @tweets = Tweet.all.order("created_at DESC")
     # @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 7).order('created_at DESC')
 
-    authorize @tweets
+    # authorize @tweets
     if params[:query].present?
-      @tweets = Tweet.global_search(params[:query])
+      @tweets = policy_scope(Tweet).global_search(params[:query])
     else
     @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 7).order('created_at DESC')
 
