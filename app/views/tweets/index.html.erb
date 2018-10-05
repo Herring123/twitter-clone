@@ -11,9 +11,10 @@
   <%= form_tag tweets_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control",
-      placeholder: "Find a tweet or user"
+      class: "form-control form-curve",
+      placeholder:  "Find a tweet or user"
     %>
+    <i class="fas fa-search search-icon"></i>
   <% end %>
 </div>
 
@@ -59,7 +60,7 @@
 
 
 
-<!-- <div class="pages"> -->
-  <%#= will_paginate @tweets,renderer: BootstrapPagination::Rails %>
-<!-- </div> -->
+<div class="pages">
+  <%= will_paginate @tweets,renderer: BootstrapPagination::Rails %>
+</div>
 
