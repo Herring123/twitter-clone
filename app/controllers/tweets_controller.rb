@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   # before_action :authenticate_user!, :except => [:index]
-
+  require "open-uri"
    def index
     # @tweets = Tweet.all.order("created_at DESC")
     # @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 7).order('created_at DESC')
@@ -14,6 +14,9 @@ class TweetsController < ApplicationController
     end
     @tweet = Tweet.new
     @user = current_user
+    url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=991b53288eab4a508a0556e8ed1f01e8'
+    article_serialized = open(url).read
+    @articles = JSON.parse(article_serialized)
   end
 
   def show

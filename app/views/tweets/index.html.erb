@@ -1,5 +1,29 @@
 <h1 class="title text-primary">Home</h1>
 
+
+<div class="flex-box">
+
+<div>
+  <h3 class="text-primary">Top News</h3>
+
+  <% @articles["articles"].each do |article| %>
+    <div class="news-card">
+        <p class="card-title"><%= article["title"] %></p>
+
+    </div>
+    <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
 <% if policy(Tweet).create? %>
   <div class="tweet-form">
       <%= render 'new',user:@user, tweet:@tweet %>
@@ -53,3 +77,5 @@
   <%= will_paginate @tweets,renderer: BootstrapPagination::Rails %>
 </div>
 
+</div>
+</div>
