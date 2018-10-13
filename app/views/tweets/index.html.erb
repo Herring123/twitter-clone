@@ -7,19 +7,6 @@
 <% end %>
 <br>
 
-<div class="search">
-  <%= form_tag tweets_path, method: :get do %>
-
-
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control form-curve",
-      placeholder:  "Find a tweet or user"
-    %>
-    <i class="fas fa-search search-icon"></i>
-  <% end %>
-</div>
-
 <div id="tweets">
   <% @tweets.each do |tweet|  %>
   <div id="tweet-<%= tweet.id %>" class="card">

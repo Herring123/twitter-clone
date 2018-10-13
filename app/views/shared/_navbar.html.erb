@@ -10,6 +10,18 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
+      <div class="search">
+      <%= form_tag tweets_path, method: :get do %>
+
+
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control form-curve",
+      placeholder:  "Find a tweet or user"
+    %>
+    <i class="fas fa-search search-icon"></i>
+  <% end %>
+</div>
       <%= current_user.username %>
       <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
