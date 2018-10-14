@@ -2,28 +2,16 @@
 
 
 <div class="flex-box">
-
 <div>
-  <h3 class="text-primary">Top News</h3>
-
-  <% @articles["articles"].each do |article| %>
+  <h3 class="text-primary sides-title">Top News</h3>
     <div class="news-card">
+  <% @articles["articles"].each do |article| %>
         <p class="card-title"><%= article["title"] %></p>
-
+  <% end %>
     </div>
-    <% end %>
 </div>
 
-
-
-
-
-
-
-
-
 <div>
-
 <% if policy(Tweet).create? %>
   <div class="tweet-form">
       <%= render 'new',user:@user, tweet:@tweet %>
@@ -76,6 +64,26 @@
 <div class="pages">
   <%= will_paginate @tweets,renderer: BootstrapPagination::Rails %>
 </div>
-
 </div>
+
+<div>
+  <h3 class="text-primary sides-title">Explore</h3>
+  <% @users.each do |user| %>
+  <div class="user_card">
+     <p class="user_username"><%= link_to user.username, user_path(user) %></p>
+     <%=  cl_image_tag user.photo, height: 60, width: 60, crop: :fill, class: "user_photo" %>
+  </div>
+
+    <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
 </div>

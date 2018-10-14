@@ -7,9 +7,9 @@ class TweetsController < ApplicationController
 
     # authorize @tweets
     if params[:query].present?
-      @tweets = policy_scope(Tweet).global_search(params[:query]).paginate(page: params[:page], per_page: 7).order('created_at DESC')
+      @tweets = policy_scope(Tweet).global_search(params[:query]).paginate(page: params[:page], per_page: 5).order('created_at DESC')
     else
-    @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 7).order('created_at DESC')
+    @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 5).order('created_at DESC')
 
     end
     @tweet = Tweet.new
@@ -17,10 +17,10 @@ class TweetsController < ApplicationController
     url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=991b53288eab4a508a0556e8ed1f01e8'
     article_serialized = open(url).read
     @articles = JSON.parse(article_serialized)
+    @users = User.all.limit(5)
   end
 
   def show
-
     @tweet = Tweet.find(params[:id])
     # authorize @user
   end
