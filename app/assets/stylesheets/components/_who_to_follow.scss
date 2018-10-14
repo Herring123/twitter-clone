@@ -21,10 +21,6 @@ top:20px;
 left:15px;
 }
 
-.sides-title{
-  // text-align: center;
-}
-
 
 .sides-title{
     // padding: 0 20px;
@@ -36,7 +32,72 @@ left:15px;
     width: 50px;
     height: 1px;
     margin: 0 10px;
-    background:red ;
+    background: $blue ;
     display: inline-block;
     vertical-align: middle;
 }
+
+.user_button{
+  font-weight: bold;
+  color:$blue;
+  position: absolute;
+  top:43px;
+  right:60px;
+  font-size: 15px;
+  border: 2px solid $blue;
+  border-radius: 20px;
+  padding: 10px 5px;
+  transition: all 0.3s ease;
+}
+
+
+  .user_button:hover{
+  background-color: $blue;
+  text-decoration:none;
+  color:white;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
