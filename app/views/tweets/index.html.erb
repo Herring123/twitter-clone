@@ -13,6 +13,7 @@
 
 <div>
 <% if policy(Tweet).create? %>
+
   <div class="tweet-form">
       <%= render 'new',user:@user, tweet:@tweet %>
   </div>
