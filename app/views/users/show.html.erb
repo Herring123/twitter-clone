@@ -7,7 +7,7 @@
 
 <div id="tweets">
   <% @tweets.each do |tweet|  %>
-  <div id="tweet-<%= tweet.id %>" class="card">
+  <div id="tweet-<%= tweet.id %>" class="card cardspace">
     <p class="photo"><%= cl_image_tag tweet.user.photo, height: 50, width: 50, crop: :fill %></p>
     <h4 class = "username"><%= link_to tweet.user.username, user_path(tweet.user) %></h4>
     <p class="tweet-content"><%= tweet.content %></p>
