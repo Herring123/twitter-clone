@@ -5,14 +5,14 @@
   <% end %>
 
   <!-- Right Navigation -->
-  <!-- <div class="navbar-wagon-right hidden-xs hidden-sm"> -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-<div class="navbar-right">
+      <div class="flexbox-navbar">
 
-      <div class="search">
+        <div class="search">
         <%= form_tag tweets_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
@@ -22,16 +22,10 @@
         <% end %>
       </div>
 
-      <div class="navbar-username text-primary">
+       <div class="navbar-username text-primary">
         <%= current_user.username %>
       </div>
 
-</div>
-      <%#= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%#= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%#= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-
-      <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= cl_image_tag current_user.photo, height: 50, width: 50, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -54,11 +48,16 @@
           </ul>
         </div>
       </div>
+      </div>
+
+
+
+      <!-- Avatar with dropdown menu -->
     <% else %>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
-  <!-- </div> -->
+  </div>
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
@@ -72,4 +71,5 @@
     </div>
   </div>
 </div>
+
 

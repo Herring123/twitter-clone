@@ -23,3 +23,26 @@ margin:auto;
   display:flex;
   justify-content:space-around;
 }
+
+@media only screen and (min-width: 2000px) {
+     .tweet-form{
+      width: 800px;
+    }
+
+    .card{
+      width: 800px;
+    }
+
+    .news-card{
+      width:500px;
+    }
+
+    .user_card{
+      width:500px;
+    }
+
+    .navbar-username{
+      margin-left: 540px;
+    }
+
+}
