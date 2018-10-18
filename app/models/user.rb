@@ -6,6 +6,8 @@ class User < ApplicationRecord
          has_many :tweets
          mount_uploader :photo, PhotoUploader
     validates :photo, presence: :true
+    acts_as_follower
+    acts_as_followable
 # validates :username, presence: :true, uniqueness: { case_sensitive: false }
   # validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
            # attr_writer :login
