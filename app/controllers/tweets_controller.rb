@@ -14,7 +14,11 @@ class TweetsController < ApplicationController
     end
     @tweet = Tweet.new
     @user = current_user
-    url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=991b53288eab4a508a0556e8ed1f01e8'
+    api_key = ENV["NEWS_API"]
+    url = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=#{api_key}"
+
+
+    # url = ENV["NEWS_API"]
     article_serialized = open(url).read
     @articles = JSON.parse(article_serialized)
     @users = User.all.limit(5)
