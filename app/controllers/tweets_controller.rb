@@ -90,17 +90,6 @@ class TweetsController < ApplicationController
    respond_to do |format|
     format.html {redirect_to :tweets}
     format.js {render "vote"}
-
-
-
-    # redirect_to :tweets
-  # respond_to do |format|
-  #   format.html {redirect_to :tweets}
-  #   format.js {render "vote"}
-  # redirect_to :tweets
-  #  if request.xhr?
-  #   head :ok
-  # else
 end
 
 end
@@ -112,14 +101,6 @@ def downvote
  respond_to do |format|
     format.html {redirect_to :tweets}
     format.js {render "vote"}
-
-
-
-  # redirect_to :tweets
-
-  # respond_to do |format|
-  #   format.html {redirect_to :tweets}
-  #   format.js {render "vote"}
 end
 end
 
