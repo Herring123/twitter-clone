@@ -22,6 +22,7 @@ class TweetsController < ApplicationController
     article_serialized = open(url).read
     @articles = JSON.parse(article_serialized)
     @users = User.all.limit(5)
+
   end
 
   def show

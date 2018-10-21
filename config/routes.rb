@@ -10,4 +10,10 @@ resources :tweets do
     put "dislike", to: "tweets#downvote"
   end
 end
+resources :users do
+  member do
+    post :follow
+    post :unfollow
+  end
+end
 end
