@@ -1,6 +1,7 @@
+<div class="background-snow" style="background-image: url(<%= image_path "treemoon.jpeg" %>);">
 
 
-<h2 class="center-title">Sign up</h2>
+<h2 class="center-title login-title">Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -40,5 +41,6 @@
 <div class="center-title">
 
 <%= render "devise/shared/links" %>
+</div>
 </div>
 
