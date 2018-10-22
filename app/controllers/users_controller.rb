@@ -10,9 +10,10 @@ class UsersController < ApplicationController
 
   def follow
      @user = User.find(params[:id])
-    @current_user.follow(@user)
+    authorize @user
+     current_user.follow(@user)
     @follow = Follow.find_by(follower: @current_user, followable: @user)
-     # current_user.follow(@user)
+
      #  current_user.follow(@user)
      #  redirect to user_path(@user)
     # respond_to :js
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
 
   def unfollow
     @user = User.find(params[:id])
-    @current_user.stop_following(@user)
+    current_user.stop_following(@user)
     # current_user.stop_following(@user)
     # redirect_to user_path(@user)
     # respond_to :js

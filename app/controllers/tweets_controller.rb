@@ -12,13 +12,13 @@ class TweetsController < ApplicationController
     @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 5).order('created_at DESC')
 
     end
-    @tweet = Tweet.new
-    @user = current_user
     api_key = ENV["NEWS_API"]
     url = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=#{api_key}"
 
 
     # url = ENV["NEWS_API"]
+    @tweet = Tweet.new
+    @user = current_user
     article_serialized = open(url).read
     @articles = JSON.parse(article_serialized)
     @users = User.all.limit(5)
