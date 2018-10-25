@@ -6,7 +6,9 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs sign-up">
+  <div class="form-inputs sign-up sign-up-flex">
+    <div class="form-width">
+
      <%= f.input :first_name,
                 required: true,
                 autofocus: true ,
@@ -21,6 +23,9 @@
                 input_html: { autocomplete: "Username" }%>
      <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
+    </div>
+    <div class="form-width">
+
     <%= f.input :email,
                 required: true,
                 autofocus: true ,
@@ -32,6 +37,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    </div>
   </div>
 
   <div class="form-actions center-title">
