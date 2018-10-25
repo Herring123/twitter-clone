@@ -7,7 +7,5 @@ class UserPolicy < ApplicationPolicy
    def show?
     return true
   end
-  def follow?
-    return true
-  end
+
 end
