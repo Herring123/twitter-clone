@@ -12,8 +12,8 @@ class TweetsController < ApplicationController
     @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 5).order('created_at DESC')
 
     end
-    # api_key = ENV["NEWS_API"]
-    url = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=991b53288eab4a508a0556e8ed1f01e8"
+    api_key = ENV["NEWS_API"]
+    url = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey="
     article_serialized = open(url).read
     @articles = JSON.parse(article_serialized)
 
@@ -36,8 +36,8 @@ class TweetsController < ApplicationController
   end
 
   def create
-    # @user = current_user
-    @user = User.find(params[:user_id])
+    @user = current_user
+    # @user = User.find(params[:user_id])
     @tweet = Tweet.new(tweet_params)
     @tweet.user = @user
     authorize @tweet
