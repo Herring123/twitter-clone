@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  # before_action :authenticate_user!, :except => [:index]
+  # before_action :authenticate_user!,  only: [:show, :edit, :destroy]
   require "open-uri"
    def index
     # @tweets = Tweet.all.order("created_at DESC")
@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
     if params[:query].present?
       @tweets = policy_scope(Tweet).global_search(params[:query]).paginate(page: params[:page], per_page: 5).order('created_at DESC')
     else
-    @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 5).order('created_at DESC')
+      @tweets = policy_scope(Tweet).paginate(page: params[:page], per_page: 5).order('created_at DESC')
 
     end
     # api_key = ENV["NEWS_API"]
