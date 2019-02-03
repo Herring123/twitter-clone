@@ -18,6 +18,8 @@ class TweetsController < ApplicationController
     @articles = JSON.parse(article_serialized)
 
 
+
+
     # url = ENV["NEWS_API"]
     @tweet = Tweet.new
     @user = current_user
